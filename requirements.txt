@@ -1,0 +1,7 @@
+numpy
+pandas
+scipy
+matplotlib
+python-dotenv
+tqdm
+rpy2
