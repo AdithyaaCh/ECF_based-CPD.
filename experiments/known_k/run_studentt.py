@@ -1,15 +1,3 @@
-#!/usr/bin/env python3
-"""Student-t ECF-vs-MIDAST known-k=1 grid.
-
-d=2 and d=10 use different parameter sets and are kept as separate pipelines
-below: d=2 uses the shared ECF/MIDAST engines on a 9x19 (nu2 x rho2) grid; d=10
-uses a smaller 5x7 grid with its own window/stride, reflecting the higher cost
-of running MIDAST at d=10.
-
-Usage:
-    python run_studentt.py --dim 2
-    python run_studentt.py --dim 10
-"""
 import os
 import sys
 import json

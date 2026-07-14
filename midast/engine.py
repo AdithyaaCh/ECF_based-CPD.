@@ -1,10 +1,3 @@
-"""MIDAST[KS] calibration and detection wrapper.
-
-Implements Algorithm 1 window calibration (power sweep on off-diagonal grid
-cells) followed by known-k=1 gated detection, using MIDAST's own two-sample
-KS dispatch (2-D Peacock/Fasano for d=2, multivariate DKW orthant KS
-otherwise).
-"""
 import os
 import sys
 import json

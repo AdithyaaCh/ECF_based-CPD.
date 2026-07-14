@@ -1,5 +1,3 @@
-"""Real e-Divisive (Matteson & James, 2014) via R's ecp::e.divisive, through
-MIDAST's vendored rpy2 wrapper. Requires R with the ecp package installed."""
 import os
 import sys
 

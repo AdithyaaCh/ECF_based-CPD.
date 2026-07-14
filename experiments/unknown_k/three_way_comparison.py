@@ -1,11 +1,6 @@
-#!/usr/bin/env python3
 """MIDAST[KS] vs ECF-Divisive vs e-Divisive, unknown-k, on sub-Gaussian
 joint-change data (alpha 1.9<->1.6 and rho 0.6<->-0.6 together), N=1000,
 k in {0, 1, 2, 3} evenly spaced change-points (k=0 = stationary).
-
-Usage:
-    python three_way_comparison.py --dim 2
-    python three_way_comparison.py --dim 10
 """
 import os
 os.environ.setdefault("OMP_NUM_THREADS", "1")

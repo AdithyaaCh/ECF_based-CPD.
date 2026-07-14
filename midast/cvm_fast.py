@@ -1,28 +1,14 @@
 """Vectorized, R-free re-implementation of MIDAST's CramerTest.
 
-Author: Adithya Cheruvu
-
 MIDAST's CramerTest (multivariate_tests_from_R.py) calls R's
 cramer.test(kernel="phiLog") through rpy2 for every sliding-window
 comparison. That call recomputes the full pairwise distance matrix from
 scratch for every bootstrap replicate and every window position, and pays a
 Python/R marshalling cost on top. Since a bootstrap replicate only relabels
-which pooled points belong to which group -- the pairwise distances between
-points never change -- the distance matrix can be computed once per window
+which pooled points belong to which group, the pairwise distances between
+points never change, the distance matrix can be computed once per window
 and reused for every replicate, and all replicates can be evaluated together
 as a single matrix product against a batched group-indicator matrix.
-
-This gives the same statistic as R's cramer.test(kernel="phiLog") (verified
-against R to 5+ decimal places, both for the observed split and for permuted
-splits) while removing the R dependency and running roughly two orders of
-magnitude faster.
-
-Two entry points:
-  - FastCramerTest: drop-in replacement for CramerTest in
-    multivariate_tests_from_R.py, same constructor/`conduct_test` signature.
-  - fast_cramer_scan: drop-in replacement for
-    ChangeDetector(test_name="CramerTest").fit(...), returning a results_df
-    with the same columns analyze_results() expects.
 """
 import numpy as np
 import pandas as pd
@@ -37,7 +23,6 @@ def phi_log(d):
 
 def energy_stat_batch(Dphi, group_a_mat):
     """Baringhaus-Franz energy statistic for many group splits at once.
-
     Dphi: (n, n) phi-transformed pairwise distance matrix for the pooled
         sample. group_a_mat: (n, B) boolean matrix, column b is the
         indicator of which of the n pooled points belong to "group A" for
@@ -63,7 +48,6 @@ def energy_stat_batch(Dphi, group_a_mat):
 
 
 class FastCramerTest:
-    """Drop-in replacement for CramerTest (multivariate_tests_from_R.py)."""
 
     def __init__(self, values1: np.ndarray, values2: np.ndarray) -> None:
         self.x = values1
@@ -90,7 +74,6 @@ class FastCramerTest:
 
 
 def fast_cramer_scan(X, window_size, shift, nboot=200, seed=0, phi=phi_log):
-    """Drop-in replacement for ChangeDetector(test_name="CramerTest").fit(...)."""
     rng = np.random.default_rng(seed)
     n_rows, _ = X.shape
     w = window_size

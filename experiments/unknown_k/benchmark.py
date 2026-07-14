@@ -1,18 +1,3 @@
-#!/usr/bin/env python3
-"""Unknown-k benchmark: ECF-Divisive vs MIDAST[KS] vs MIDAST[CvM] (fast) vs
-e-Divisive, each run at its authored defaults (no knob tuned to the true k).
-
-Grid: families {gaussian, subgaussian, studentt_nu2, lomax} x dims {2, 10} x
-k in {0, 1, 2, 3}, joint change (alpha and rho both flip), N=1000.
-
-Metrics per (family, dim, k, method): exact-k %, mean k_hat, precision /
-recall / F1 @ tolerance, localization MAE (matched), covering metric
-(Truong et al. 2020), false-alarm rate (from k=0), runtime.
-
-Usage:
-    python benchmark.py --trials 50
-    python benchmark.py --summarize
-"""
 import os
 import sys
 import time

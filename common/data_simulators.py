@@ -1,9 +1,3 @@
-"""Data generators (Student-t, sub-Gaussian alpha-stable).
-
-Behaviourally identical to the previous NeuralECF generators (and to the MIDAST
-paper, Eq. 11/14/19). The alpha-stable RNG is reused from the vendored MIDAST
-copy of `stblrnd` so a single file is the source of truth.
-"""
 from __future__ import annotations
 
 from dataclasses import dataclass

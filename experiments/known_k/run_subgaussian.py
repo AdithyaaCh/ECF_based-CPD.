@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-"""Sub-Gaussian ECF-vs-MIDAST known-k=1 grid, d in {2, 10}.
-
-Usage:
-    python run_subgaussian.py --dim 2
-    python run_subgaussian.py --dim 10
-"""
 import os
 import sys
 import time

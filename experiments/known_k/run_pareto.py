@@ -1,18 +1,3 @@
-#!/usr/bin/env python3
-"""Lomax (Pareto Type II) ECF-vs-MIDAST known-k=1 grid, d in {2, 10}.
-
-Each coordinate is an independent np.random.pareto(alpha) draw; alpha alone
-controls tail heaviness. W_GRID is wider than for sub-Gaussian/Student-t
-(extends to 300, 400) since Lomax's heavier tails need larger windows to
-reach the target calibration power in the hardest cells.
-
-Lomax is the one family where the sine (imaginary-CF) feature helps rather
-than hurts, so ECF is run with feature="cossin" here (see the ablation study).
-
-Usage:
-    python run_pareto.py --dim 2
-    python run_pareto.py --dim 10
-"""
 import os
 import sys
 import json

@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-"""Build the ECF-vs-MIDAST comparative heatmaps into comparative_plots/, from
-the raw CSVs produced by run_subgaussian.py / run_pareto.py / run_studentt.py.
-
-Each panel: ECF MAE (known-k=1, always answers) | MIDAST[KS] MAE given
-detection | MIDAST[KS] recall %.
-"""
 import os
 
 import numpy as np
